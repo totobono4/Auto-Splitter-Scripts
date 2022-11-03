@@ -7,7 +7,7 @@ Some auto splitter scripts I made.
 
 **Prerequisites**: 
 - Emulator Bizhawk
-- LiveSplit 2.7+
+- LiveSplit 1.7+
 
 Open EmuHawk.exe, then go to the `Tools` tab and open the `Lua Console` in order to insert the `LUA` script.
 
