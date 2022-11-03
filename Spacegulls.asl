@@ -5,18 +5,13 @@ startup {
 }
 
 init {
-    print("memory Process Name: " + memory.ProcessName);
-
     vars.gamename = timer.Run.GameName;
     vars.livesplitGameName = vars.gamename;
-    print(vars.gamename);
 
     IntPtr startOffset = modules.First().BaseAddress;
     int moduleSize = modules.First().ModuleMemorySize;
     IntPtr endOffset = IntPtr.Add(startOffset, moduleSize);
     IntPtr gameRamAdress = new IntPtr();
-
-    print("EmuHawk adress: " + startOffset);
 
     long memoryOffset = 0;
 
@@ -28,8 +23,6 @@ init {
         if (moduleSize == 4571136) {
             gameRamAdress = (IntPtr)((long)startOffset + 0x0 /* TODO find game RAM memory address */);
             memoryOffset = (long)memory.ReadValue<IntPtr>(gameRamAdress);
-
-            print("game ram Offset: " + memoryOffset);
         }
     }
 
