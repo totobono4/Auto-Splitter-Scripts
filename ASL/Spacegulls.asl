@@ -1,3 +1,7 @@
+/*
+    THIS SCRIPT DON'T WORK FOR NOW, TAKE THE LUA ONE OR FIGURE OUT WHERE IS BIZHAWK GAME'S RAM.
+*/
+
 state("emuhawk") {}
 
 startup {

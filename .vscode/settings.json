@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "*.anm2": "xml"
+    },
+    "Lua.diagnostics.globals": [
+        "pipe_handle"
+    ]
+}
