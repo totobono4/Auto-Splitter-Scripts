@@ -100,13 +100,13 @@ while true do
     end
 
     if reset() then
-        print("Timer stops!")
+        print("Timer resets!")
         pipe_handle:write("reset\r\n")
         pipe_handle:flush()
     end
 
     if split() then
-        print("Do a split roll!")
+        print("Do a split roll!!")
         pipe_handle:write("split\r\n")
         pipe_handle:flush()
     end
