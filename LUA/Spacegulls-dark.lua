@@ -1,5 +1,5 @@
 -- Spacegulls auto-splitter
--- file: Spacegulls.lua
+-- file: Spacegulls-dark.lua
 -- author: totobono4
 -- git: https://github.com/totobono4/Auto-Splitter-Scripts
 
@@ -42,6 +42,7 @@ saves = {
     {10, 6},
     {10, 0},
 } -- saves coordinates
+nbSaves = 8 -- number of saves
 
 ends = {13, 2} -- end coordinates
 idle = 11 -- idle state
@@ -75,7 +76,7 @@ local function split()
     local y_room_coord = memory.readbyte(y_room_coords)
     local player_sprite = memory.readbyte(player_state)
 
-    if save <= 8 and x_room_coord == saves[save][1] and y_room_coord == saves[save][2] then
+    if save <= nbSaves and x_room_coord == saves[save][1] and y_room_coord == saves[save][2] then
         save = save + 1
         return true
     end
