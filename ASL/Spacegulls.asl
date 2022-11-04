@@ -79,8 +79,10 @@ update {
 }
 
 start {
-    vars.save = 0;
-    return vars.start.Old == 0 && vars.start.Current == 1;
+    if (vars.start.Old == 0 && vars.start.Current == 1) {
+        vars.save = 0;
+        return true;
+    }
 }
 
 split {
@@ -104,8 +106,11 @@ split {
 }
 
 reset {
-    vars.save = 0;
-    return vars.start.Old == 1 && vars.start.Current == 0;
+    if (vars.start.Old == 1 && vars.start.Current == 0) {
+        vars.save = 0;
+        return true;
+    }
+    return false;
 }
 
 exit {
