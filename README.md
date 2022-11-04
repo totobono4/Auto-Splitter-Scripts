@@ -1,3 +1,5 @@
+🌏 [Documentation Française](README.fr.md)
+
 # Auto-Splitter-Scripts
 Some auto splitter scripts I made.
 
