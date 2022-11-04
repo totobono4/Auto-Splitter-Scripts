@@ -16,7 +16,6 @@ startup {
 }
 
 init {
-    refreshRate = 5;
     vars.tokenSource = new CancellationTokenSource();
     vars.token = vars.tokenSource.Token;
     
@@ -80,6 +79,7 @@ update {
 }
 
 start {
+    save = 0;
     return vars.start.Old == 0 && vars.start.Current == 1;
 }
 
@@ -104,6 +104,7 @@ split {
 }
 
 reset {
+    save = 0;
     return vars.start.Old == 1 && vars.start.Current == 0;
 }
 
