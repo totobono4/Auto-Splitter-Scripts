@@ -83,6 +83,7 @@ start {
         vars.save = 0;
         return true;
     }
+    return false;
 }
 
 split {
