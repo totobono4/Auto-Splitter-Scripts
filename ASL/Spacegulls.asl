@@ -30,7 +30,6 @@ init {
             foreach (var page in game.MemoryPages()) {
                 var scanner = new SignatureScanner(game, page.BaseAddress, (int)page.RegionSize);
                 if((ptr = scanner.Scan(scanTarget)) != IntPtr.Zero) {
-                    if ((int)page.RegionSize == 2093056) continue;
                     break;
                 }
             }
