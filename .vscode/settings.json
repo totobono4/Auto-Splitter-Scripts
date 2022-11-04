@@ -3,6 +3,25 @@
         "*.anm2": "xml"
     },
     "Lua.diagnostics.globals": [
-        "pipe_handle"
+        "pipe_handle",
+        "press_start",
+        "x_room_coords",
+        "y_room_coords",
+        "player_state",
+        "x_save_coords",
+        "y_save_coords",
+        "started",
+        "finished",
+        "save",
+        "saves",
+        "ends",
+        "memory",
+        "emu",
+        "idle",
+        "x_player_coords",
+        "nb_saves",
+        "end_position",
+        "x_player_coord",
+        "save5_position"
     ]
 }

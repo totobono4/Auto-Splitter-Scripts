@@ -5,6 +5,7 @@
 
 -- Starts on start pressed.
 -- Splits on entering save rooms.
+-- Split Save 5 on going over the button.
 -- Ends on touching the ground in the final screen.
 
 -- LiveSplit function from trysdyn: https://github.com/trysdyn/bizhawk-speedrun-lua
@@ -26,6 +27,7 @@ end
 press_start = 0x244 -- start pressed
 x_room_coords = 0x5E -- x coord on map
 y_room_coords = 0x5F -- y coord on map
+x_player_coords = 0x7 -- x coord of player
 player_state = 0x7B -- 11 when idle state
 
 started = false -- the rum has started
@@ -42,10 +44,17 @@ saves = {
     {10, 6},
     {10, 0},
 } -- saves coordinates
-nbSaves = 8 -- number of saves
+nb_saves = 8 -- number of saves
+save5_position = 0x84 -- split position at save 5
 
 ends = {13, 2} -- end coordinates
 idle = 11 -- idle state
+
+local function init_vars()
+    started = false
+    finished = false
+    save = 1
+end
 
 local function start()
     local start_pressed = memory.readbyte(press_start)
@@ -63,9 +72,7 @@ local function reset()
     local start_pressed = memory.readbyte(press_start)
 
     if started and start_pressed == 0 then
-        started = false
-        finished = false
-        save = 1
+        init_vars()
         return true
     end
     return false
@@ -74,11 +81,14 @@ end
 local function split()
     local x_room_coord = memory.readbyte(x_room_coords)
     local y_room_coord = memory.readbyte(y_room_coords)
+    local x_player_coord = memory.readbyte(x_player_coords)
     local player_sprite = memory.readbyte(player_state)
 
-    if save <= nbSaves and x_room_coord == saves[save][1] and y_room_coord == saves[save][2] then
-        save = save + 1
-        return true
+    if save <= nb_saves and x_room_coord == saves[save][1] and y_room_coord == saves[save][2] then
+        if save ~= 5 or (save == 5 and x_player_coord >= save5_position) then
+            save = save + 1
+            return true
+        end
     end
 
     if not finished and x_room_coord == ends[1] and y_room_coord == ends[2] and player_sprite == idle then
