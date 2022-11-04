@@ -52,7 +52,7 @@ init {
     vars.threadScan.Start();
 
     vars.save = 0;
-    vars.savesNb = 8;
+    vars.savesNb = 7;
     vars.save5_position = 0x84;
     vars.saves = new List<Dictionary<string, int>> {
         new Dictionary<string, int>{{"x", 10},{"y", 11}},
