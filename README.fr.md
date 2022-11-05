@@ -10,9 +10,17 @@
 
 Ouvrez l'émulateur EmuHawk.exe, puis allez dans l'onglet `Tools` et ouvrez la `Lua Console` afin de pouvoir importer le script `LUA`.
 
+![Ouvrir LUA Console](.docs/Tools_LUA_Console.png)
+
 Une fois dans la `LUA Console`, allez dans l'onglet `Script` -> `Open script` et sélectionnez le fichier `.lua` que vous voulez.
 
+![Importer le script](.docs/Scripts_Open_Script.png)
+
 N'oubliez pas de laisser la `LUA Console` ouverte pour garder le script actif. (vous pouvez la réduire)!
+
+Si vous ne pouvez pas démarrer le script, assurez-vous que votre LiveSplit soit ouvert.
+
+![Script lancé](.docs/Script_Launched.png)
 
 ## Troubleshooting
 
