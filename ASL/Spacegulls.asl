@@ -89,7 +89,7 @@ start {
 split {
     if (vars.save <= vars.savesNb && vars.coordX.Current == vars.saves[vars.save]["x"] && vars.coordY.Current == vars.saves[vars.save]["y"]) {
         if (settings["UD_10"]) {
-            if (vars.save != 4 || (vars.save == 4 && vars.playerCoords.Current >= vars.save5_position)) {
+            if (vars.save != 4 || (vars.save == 4 && vars.playerCoords.Current >= vars.save5_position && vars.playerCoords.Current < 0xF0)) {
                 vars.save++;
                 return settings["save" + vars.save];
             }
