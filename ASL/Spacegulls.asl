@@ -46,7 +46,7 @@ init {
     vars.end = new Dictionary<string, int> {
         {"x", 13}, {"y", 2}
     };
-    vars.endState = 11;
+    vars.endPosition = 0x68;
 }
 
 update {
@@ -72,8 +72,8 @@ update {
                         (vars.coordX = new MemoryWatcher<byte>(ptr+0x5E)),
                         (vars.coordY = new MemoryWatcher<byte>(ptr+0x5F)),
                         (vars.start = new MemoryWatcher<byte>(ptr+0x244)),
-                        (vars.playerState = new MemoryWatcher<byte>(ptr+0x7B)),
-                        (vars.playerCoords = new MemoryWatcher<byte>(ptr+0x7)),
+                        (vars.playerPositionX = new MemoryWatcher<byte>(ptr+0x7)),
+                        (vars.playerPositionY = new MemoryWatcher<byte>(ptr+0x8)),
                         (vars.frames = new MemoryWatcher<byte>(ptr+0x12))
                     };
                     print("[Autosplitter] Done scanning");
@@ -122,7 +122,7 @@ start {
 split {
     if (vars.save <= vars.savesNb && vars.coordX.Current == vars.saves[vars.save]["x"] && vars.coordY.Current == vars.saves[vars.save]["y"]) {
         if (settings["UD_10"]) {
-            if (vars.save != 4 || (vars.save == 4 && vars.playerCoords.Current >= vars.save5_position && vars.playerCoords.Current < 0xF0)) {
+            if (vars.save != 4 || (vars.save == 4 && vars.playerPositionX.Current >= vars.save5_position && vars.playerPositionX.Current < 0xF0)) {
                 vars.save++;
                 return settings["save" + vars.save];
             }
@@ -132,7 +132,7 @@ split {
         }
     }
 
-    if (vars.coordX.Current == vars.end["x"] && vars.coordY.Current == vars.end["y"] && vars.playerState.Current == vars.endState) {
+    if (vars.coordX.Current == vars.end["x"] && vars.coordY.Current == vars.end["y"] && vars.playerPositionY.Current == vars.endPosition) {
         return true;
     }
 
