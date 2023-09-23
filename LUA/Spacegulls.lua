@@ -28,7 +28,7 @@ press_start = 0x244 -- start pressed
 x_room_coords = 0x5E -- x coord on map
 y_room_coords = 0x5F -- y coord on map
 x_player_coords = 0x7 -- x coord of player
-player_state = 0x7B -- 11 when idle state
+y_player_coords = 0x8 -- y coord of player
 
 started = false -- the rum has started
 finished = false -- the run has finished
@@ -48,7 +48,7 @@ nb_saves = 8 -- number of saves
 save5_position = 0x84 -- split position at save 5
 
 ends = {13, 2} -- end coordinates
-idle = 11 -- idle state
+end_position = 0x68 -- end game position
 
 local function init_vars()
     started = false
@@ -82,7 +82,7 @@ local function split()
     local x_room_coord = memory.readbyte(x_room_coords)
     local y_room_coord = memory.readbyte(y_room_coords)
     local x_player_coord = memory.readbyte(x_player_coords)
-    local player_sprite = memory.readbyte(player_state)
+    local y_player_coord = memory.readbyte(y_player_coords)
 
     if save <= nb_saves and x_room_coord == saves[save][1] and y_room_coord == saves[save][2] then
         if save ~= 5 or (save == 5 and x_player_coord >= save5_position) then
@@ -91,7 +91,7 @@ local function split()
         end
     end
 
-    if not finished and x_room_coord == ends[1] and y_room_coord == ends[2] and player_sprite == idle then
+    if not finished and x_room_coord == ends[1] and y_room_coord == ends[2] and y_player_coord == end_position then
         finished = true
         return true
     end
